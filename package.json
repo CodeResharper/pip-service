@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "./bin/start",
-    "test": "./bin/test",
+    "start-debug": "node --max_old_space_size=8000  index.js --inspect-brk=9230 --nolazy",
+    "start-local": "node --max_old_space_size=8000 -r dotenv/config index.js",
+    "test": "node test/test.js | npx tap-dot",
     "lint": "jshint .",
     "travis": "npm test",
     "validate": "npm ls",
@@ -29,6 +31,7 @@
     "through2": "^3.0.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "jshint": "^2.8.0",
     "pelias-mock-logger": "^1.3.0",
     "precommit-hook": "^3.0.0",
